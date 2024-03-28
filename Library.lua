@@ -6,12 +6,13 @@ local players        = game:GetService("Players")
 local localPlayer    = players.LocalPlayer
 local mouse          = localPlayer:GetMouse()
 
-local menu           = game:GetObjects("rbxassetid://12702460854")[1]
+local menu           = game:GetObjects("rbxassetid://12705540680")[1]
 syn.protect_gui(menu)
 menu.bg.Position     = UDim2.new(0.5,-menu.bg.Size.X.Offset/2,0.5,-menu.bg.Size.Y.Offset/2)
 menu.Parent          = game:GetService("CoreGui")
-menu.bg.pre.Text = 'Seere<font color="#c375ae">.vip</font> - fiji was here!!!!'
-local library = {cheatname = "";ext = "";gamename = "";colorpicking = false;tabbuttons = {};tabs = {};options = {};flags = {};scrolling = false;notifyText = Drawing.new("Text");playing = false;multiZindex = 200;toInvis = {};libColor = Color3.fromRGB(240, 142, 214);disabledcolor = Color3.fromRGB(233, 0, 0);blacklisted = {Enum.KeyCode.W,Enum.KeyCode.A,Enum.KeyCode.S,Enum.KeyCode.D,Enum.UserInputType.MouseMovement}}
+menu.bg.pre.Text = 'Seere<font color="#4517ff">.vip</font> - fiji was here!!!!'
+
+local library = {cheatname = "";ext = "";gamename = "";colorpicking = false;tabbuttons = {};tabs = {};options = {};flags = {};scrolling = false;notifyText = Drawing.new("Text");playing = false;multiZindex = 200;toInvis = {};libColor = Color3.fromRGB(69, 23, 255);disabledcolor = Color3.fromRGB(233, 0, 0);blacklisted = {Enum.KeyCode.W,Enum.KeyCode.A,Enum.KeyCode.S,Enum.KeyCode.D,Enum.UserInputType.MouseMovement}}
 
 function draggable(a)local b=inputService;local c;local d;local e;local f;local function g(h)if not library.colorpicking then local i=h.Position-e;a.Position=UDim2.new(f.X.Scale,f.X.Offset+i.X,f.Y.Scale,f.Y.Offset+i.Y)end end;a.InputBegan:Connect(function(h)if h.UserInputType==Enum.UserInputType.MouseButton1 or h.UserInputType==Enum.UserInputType.Touch then c=true;e=h.Position;f=a.Position;h.Changed:Connect(function()if h.UserInputState==Enum.UserInputState.End then c=false end end)end end)a.InputChanged:Connect(function(h)if h.UserInputType==Enum.UserInputType.MouseMovement or h.UserInputType==Enum.UserInputType.Touch then d=h end end)b.InputChanged:Connect(function(h)if h==d and c then g(h)end end)end
 draggable(menu.bg)
@@ -131,9 +132,9 @@ function library:addTab(name)
 
         groupbox.Parent = newTab[pos]
         groupbox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-        groupbox.BorderColor3 = Color3.fromRGB(30, 30, 30)
+        groupbox.BorderColor3 = Color3.fromRGB(50, 50, 50)
         groupbox.BorderSizePixel = 2
-        groupbox.Size = UDim2.new(0, 211, 0, 8)
+        groupbox.Size = UDim2.new(0, 215, 0, 8)
         groupbox.ZIndex = groupCount
 
         grouper.Parent = groupbox
@@ -203,20 +204,19 @@ function library:addTab(name)
             tobble.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             tobble.BorderColor3 = Color3.fromRGB(0, 0, 0)
             tobble.BorderSizePixel = 3
-                        tobble.Position = UDim2.new(0.0299999993, 0, 0.272000015, 0)
-
+            tobble.Position = UDim2.new(0.0299999993, 0, 0.272000015, 0)
             tobble.Size = UDim2.new(0, 10, 0, 10)
             
             mid.Name = "mid"
             mid.Parent = tobble
             mid.BackgroundColor3 = Color3.fromRGB(69, 23, 255)
-            mid.BorderColor3 = Color3.fromRGB(30,30,30)
+            mid.BorderColor3 = Color3.fromRGB(60, 60, 60)
             mid.BorderSizePixel = 2
             mid.Size = UDim2.new(0, 10, 0, 10)
             
             front.Name = "front"
             front.Parent = mid
-            front.BackgroundColor3 = Color3.fromRGB(15,15,15)
+            front.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
             front.BorderColor3 = Color3.fromRGB(0, 0, 0)
             front.Size = UDim2.new(0, 10, 0, 10)
             
@@ -236,7 +236,6 @@ function library:addTab(name)
             button.Name = "button"
             button.Parent = toggleframe
             button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-
             button.BackgroundTransparency = 1.000
             button.BorderSizePixel = 0
             button.Size = UDim2.new(0, 101, 1, 0)
@@ -255,7 +254,7 @@ function library:addTab(name)
             function toggle(newState)
                 state = newState
                 library.flags[args.flag] = state
-                front.BackgroundColor3 = state and library.libColor or Color3.fromRGB(15,15,15)
+                front.BackgroundColor3 = state and library.libColor or Color3.fromRGB(35, 35, 35)
                 text.TextColor3 = state and Color3.fromRGB(244, 244, 244) or Color3.fromRGB(144, 144, 144)
                 if args.callback then
                     args.callback(state)
@@ -265,8 +264,8 @@ function library:addTab(name)
                 state = not state
                 front.Name = state and "accent" or "back"
                 library.flags[args.flag] = state
-                mid.BorderColor3 = Color3.fromRGB(30,30,30)
-                front.BackgroundColor3 = state and library.libColor or Color3.fromRGB(15,15,15)
+                mid.BorderColor3 = Color3.fromRGB(60,60, 60)
+                front.BackgroundColor3 = state and library.libColor or Color3.fromRGB(35, 35, 35)
                 text.TextColor3 = state and Color3.fromRGB(244, 244, 244) or Color3.fromRGB(144, 144, 144)
                 if args.callback then
                     args.callback(state)
@@ -276,7 +275,7 @@ function library:addTab(name)
                 mid.BorderColor3 = library.libColor
 			end)
             button.MouseLeave:connect(function()
-                mid.BorderColor3 = Color3.fromRGB(30,30,30)
+                mid.BorderColor3 = Color3.fromRGB(60, 60, 60)
 			end)
 
             library.flags[args.flag] = false
@@ -375,7 +374,7 @@ function library:addTab(name)
                 mid.Name = "mid"
                 mid.Parent = colorpicker
                 mid.BackgroundColor3 = Color3.fromRGB(69, 23, 255)
-                mid.BorderColor3 = Color3.fromRGB(30,30,30)
+                mid.BorderColor3 = Color3.fromRGB(60, 60, 60)
                 mid.BorderSizePixel = 2
                 mid.Size = UDim2.new(1, 0, 1, 0)
                 
@@ -487,14 +486,14 @@ function library:addTab(name)
 
                 button2.MouseButton1Click:Connect(function()
                     colorFrame.Visible = not colorFrame.Visible
-                    mid.BorderColor3 = Color3.fromRGB(30,30,30)
+                    mid.BorderColor3 = Color3.fromRGB(60, 60, 60)
                 end)
 
                 button2.MouseEnter:connect(function()
                     mid.BorderColor3 = library.libColor
                 end)
                 button2.MouseLeave:connect(function()
-                    mid.BorderColor3 = Color3.fromRGB(30,30,30)
+                    mid.BorderColor3 = Color3.fromRGB(60, 60, 60)
                 end)
 
                 local function updateValue(value,fakevalue)
@@ -595,7 +594,7 @@ function library:addTab(name)
             bg.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
             bg.BorderColor3 = Color3.fromRGB(0, 0, 0)
             bg.BorderSizePixel = 2
-            bg.Position = UDim2.new(0.02, -1, 0, 0)
+            bg.Position = UDim2.new(0.0299999993, -1, 0.140000001, 0)
             bg.Size = UDim2.new(0, 205, 0, 15)
             
             main.Name = "main"
@@ -616,7 +615,7 @@ function library:addTab(name)
             button.TextSize = 13.000
             button.TextStrokeTransparency = 0.000
             
-            gradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(105, 105, 105)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(121, 121, 121))}
+            gradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(171, 171, 171))}
             gradient.Rotation = 90
             gradient.Name = "gradient"
             gradient.Parent = main
@@ -658,7 +657,7 @@ function library:addTab(name)
             bg.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
             bg.BorderColor3 = Color3.fromRGB(0, 0, 0)
             bg.BorderSizePixel = 2
-            bg.Position = UDim2.new(0.02, -1, 0, 16)
+            bg.Position = UDim2.new(0.0299999993, -1, 0, 16)
             bg.Size = UDim2.new(0, 205, 0, 10)
             
             main.Name = "main"
@@ -695,7 +694,7 @@ function library:addTab(name)
             valuetext.TextSize = 14.000
             valuetext.TextStrokeTransparency = 0.000
             
-            UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(105, 105, 105)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(121, 121, 121))}
+            UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(113, 113, 113))}
             UIGradient.Rotation = 90
             UIGradient.Parent = main
             
@@ -799,17 +798,17 @@ function library:addTab(name)
 
             bg.Name = "bg"
             bg.Parent = textbox
-            bg.BackgroundColor3 = Color3.fromRGB(15,15,15)
+            bg.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
             bg.BorderColor3 = Color3.fromRGB(0, 0, 0)
             bg.BorderSizePixel = 2
-            bg.Position = UDim2.new(0.02, -1, 0, 16)
+            bg.Position = UDim2.new(0.0299999993, -1, 0, 16)
             bg.Size = UDim2.new(0, 205, 0, 15)
 
             main.Name = "main"
             main.Parent = bg
             main.Active = true
-            main.BackgroundColor3 = Color3.fromRGB(15,15,15)
-            main.BorderColor3 = Color3.fromRGB(30, 30, 30)
+            main.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+            main.BorderColor3 = Color3.fromRGB(60, 60, 60)
             main.Size = UDim2.new(1, 0, 1, 0)
             main.CanvasSize = UDim2.new(0, 0, 0, 0)
             main.ScrollBarThickness = 0
@@ -827,7 +826,7 @@ function library:addTab(name)
             box.TextStrokeTransparency = 0.000
             box.TextXAlignment = Enum.TextXAlignment.Left
 
-            gradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(105, 105, 105)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(121, 121, 121))}
+            gradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(171, 171, 171))}
             gradient.Rotation = 90
             gradient.Name = "gradient"
             gradient.Parent = main
@@ -869,7 +868,7 @@ function library:addTab(name)
             bg.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
             bg.BorderColor3 = Color3.fromRGB(0, 0, 0)
             bg.BorderSizePixel = 2
-            bg.Position = UDim2.new(0.02, 0, 0, 4)
+            bg.Position = UDim2.new(0.0240000002, 0, 0, 4)
             bg.Size = UDim2.new(0, 191, 0, 1)
             
             main.Name = "main"
@@ -911,7 +910,7 @@ function library:addTab(name)
             bg.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
             bg.BorderColor3 = Color3.fromRGB(0, 0, 0)
             bg.BorderSizePixel = 2
-            bg.Position = UDim2.new(0.02, -1, 0, 16)
+            bg.Position = UDim2.new(0.0299999993, -1, 0, 16)
             bg.Size = UDim2.new(0, 205, 0, 15)
 
             main.Name = "main"
@@ -957,7 +956,7 @@ function library:addTab(name)
             valuetext.TextStrokeTransparency = 0.000
             valuetext.TextXAlignment = Enum.TextXAlignment.Left
 
-            gradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(105, 105, 105)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(121, 121, 121))}
+            gradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(171, 171, 171))}
             gradient.Rotation = 90
             gradient.Name = "gradient"
             gradient.Parent = main
@@ -1147,13 +1146,13 @@ function library:addTab(name)
             frame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
             frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
             frame.BorderSizePixel = 2
-            frame.Position = UDim2.new(0.02, -1, 0.0439999998, 0)
+            frame.Position = UDim2.new(0.0299999993, -1, 0.0439999998, 0)
             frame.Size = UDim2.new(0, 205, 0, 128)
             
             main.Name = "main"
             main.Parent = frame
             main.BackgroundColor3 = Color3.fromRGB(18, 18, 18)
-            main.BorderColor3 = Color3.fromRGB(30,30,30)
+            main.BorderColor3 = Color3.fromRGB(60, 60, 60)
             main.Size = UDim2.new(1, 0, 1, 0)
             
             holder.Name = "holder"
@@ -1320,7 +1319,7 @@ function library:addTab(name)
             text.Parent = colorpicker
             text.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             text.BackgroundTransparency = 1.000
-            text.Position = UDim2.new(0.02, -1, 0, 10)
+            text.Position = UDim2.new(0.0299999993, -1, 0, 10)
             text.Font = Enum.Font.Code
             text.Text = args.text or args.flag
             text.TextColor3 = Color3.fromRGB(244, 244, 244)
@@ -1350,7 +1349,7 @@ function library:addTab(name)
             mid.Name = "mid"
             mid.Parent = colorpicker_2
             mid.BackgroundColor3 = Color3.fromRGB(69, 23, 255)
-            mid.BorderColor3 = Color3.fromRGB(30,30,30)
+            mid.BorderColor3 = Color3.fromRGB(60, 60, 60)
             mid.BorderSizePixel = 2
             mid.Size = UDim2.new(1, 0, 1, 0)
 
@@ -1450,7 +1449,7 @@ function library:addTab(name)
             copy.BorderSizePixel = 0
             copy.Size = UDim2.new(0, 129, 0, 14)
             copy.ZIndex = 5
-            copy.Font = Enum.Font.Code
+            copy.Font = Enum.Font.SourceSans
             copy.Text = args.text or args.flag
             copy.TextColor3 = Color3.fromRGB(100, 100, 100)
             copy.TextSize = 14.000
@@ -1462,14 +1461,14 @@ function library:addTab(name)
 
             button.MouseButton1Click:Connect(function()
 				colorFrame.Visible = not colorFrame.Visible
-                mid.BorderColor3 = Color3.fromRGB(30,30,30)
+                mid.BorderColor3 = Color3.fromRGB(60, 60, 60)
             end)
 
             button.MouseEnter:connect(function()
                 mid.BorderColor3 = library.libColor
             end)
             button.MouseLeave:connect(function()
-                mid.BorderColor3 = Color3.fromRGB(30,30,30)
+                mid.BorderColor3 = Color3.fromRGB(60, 60, 60)
             end)
 
             local function updateValue(value,fakevalue)
@@ -1564,7 +1563,7 @@ function library:addTab(name)
             text.Parent = keybind
             text.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             text.BackgroundTransparency = 1.000
-            text.Position = UDim2.new(0.02, -1, 0, 10)
+            text.Position = UDim2.new(0.0299999993, -1, 0, 10)
             text.Font = Enum.Font.Code
             text.Text = args.text or args.flag
             text.TextColor3 = Color3.fromRGB(244, 244, 244)
@@ -1577,7 +1576,7 @@ function library:addTab(name)
             button.BackgroundTransparency = 1.000
             button.BorderSizePixel = 0
             button.Position = UDim2.new(7.09711117e-08, 0, 0, 0)
-            button.Size = UDim2.new(0.02, 0, 1, 0)
+            button.Size = UDim2.new(0.978837132, 0, 1, 0)
             button.Font = Enum.Font.Code
             button.Text = "--"
             button.TextColor3 = Color3.fromRGB(155, 155, 155)
@@ -1724,13 +1723,11 @@ end
 local aimbotTab = library:addTab("Legit")
 local visualsTab = library:addTab("Ragebot")
 local miscTab = library:addTab("Visuals")
-local skinTab = library:addTab("Skins")
 local miscTab = library:addTab("Misc")
-local luaTab = library:addTab("Luas")
 local configTab = library:addTab("Settings")
 local createconfigs = configTab:createGroup('left', 'Create Configs')
 local configsettings = configTab:createGroup('left', 'Config Settings')
-local uisettings = configTab:createGroup('center', 'UI Settings')
+local uisettings = configTab:createGroup('right', 'UI Settings')
 local othersettings = configTab:createGroup('right', 'Other')
 
 createconfigs:addTextbox({text = "Name",flag = "config_name"})
